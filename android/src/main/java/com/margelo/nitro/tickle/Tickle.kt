@@ -7,65 +7,76 @@ class Tickle : HybridTickleSpec() {
   override val memorySize: Long
     get() = 0L
 
-  private var hapticsEnabled: Boolean = true
-
   override fun startHaptic(events: Array<HapticEvent>, curves: Array<HapticCurve>) {
-    // TODO: Android haptics implementation not yet supported
+    AndroidHaptics.play(events, curves)
   }
 
   override fun stopAllHaptics() {
-    // TODO: Android haptics implementation not yet supported
+    AndroidHaptics.stopAll()
   }
 
   override fun initializeEngine() {
-    // TODO: Android haptics implementation not yet supported
+    AndroidHaptics.initializeEngine()
   }
 
   override fun destroyEngine() {
-    // TODO: Android haptics implementation not yet supported
+    AndroidHaptics.destroyEngine()
   }
 
   override fun createContinuousPlayer(playerId: String, initialIntensity: Double, initialSharpness: Double) {
-    // TODO: Android haptics implementation not yet supported
+    AndroidHaptics.createPlayer(playerId, initialIntensity, initialSharpness)
   }
 
   override fun startContinuousPlayer(playerId: String) {
-    // TODO: Android haptics implementation not yet supported
+    AndroidHaptics.startPlayer(playerId)
   }
 
   override fun updateContinuousPlayer(playerId: String, intensityControl: Double, sharpnessControl: Double) {
-    // TODO: Android haptics implementation not yet supported
+    AndroidHaptics.updatePlayer(playerId, intensityControl, sharpnessControl)
   }
 
   override fun stopContinuousPlayer(playerId: String) {
-    // TODO: Android haptics implementation not yet supported
+    AndroidHaptics.stopPlayer(playerId)
   }
   
   override fun destroyContinuousPlayer(playerId: String) {
-    // TODO: Android haptics implementation not yet supported
+    AndroidHaptics.destroyPlayer(playerId)
   }
 
   // MARK: - Global Haptics Enable/Disable
 
   override fun setHapticsEnabled(enabled: Boolean) {
-    hapticsEnabled = enabled
+    AndroidHaptics.enabled = enabled
   }
 
   override fun getHapticsEnabled(): Boolean {
-    return hapticsEnabled
+    return AndroidHaptics.enabled
   }
 
   // MARK: - System Haptics (Predefined OS-level feedback)
+  // Each cue is the intensity and sharpness of its UIKit counterpart.
 
   override fun triggerImpact(style: HapticImpactStyle) {
-    // TODO: Android haptics implementation not yet supported
+    when (style) {
+      HapticImpactStyle.SOFT -> AndroidHaptics.tap(0.35f, 0.2f)
+      HapticImpactStyle.LIGHT -> AndroidHaptics.tap(0.3f, 0.6f)
+      HapticImpactStyle.MEDIUM -> AndroidHaptics.tap(0.6f, 0.6f)
+      HapticImpactStyle.RIGID -> AndroidHaptics.tap(0.7f, 1f)
+      HapticImpactStyle.HEAVY -> AndroidHaptics.tap(0.9f, 0.4f)
+    }
   }
 
   override fun triggerNotification(type: HapticNotificationType) {
-    // TODO: Android haptics implementation not yet supported
+    // (delay ms, intensity, sharpness) per tap.
+    when (type) {
+      HapticNotificationType.SUCCESS -> AndroidHaptics.taps(floatArrayOf(0f, 0.5f, 0.6f, 100f, 0.8f, 0.6f))
+      HapticNotificationType.WARNING -> AndroidHaptics.taps(floatArrayOf(0f, 0.8f, 0.6f, 130f, 0.5f, 0.6f))
+      HapticNotificationType.ERROR ->
+        AndroidHaptics.taps(floatArrayOf(0f, 0.7f, 0.6f, 100f, 0.7f, 0.6f, 200f, 0.9f, 0.6f))
+    }
   }
 
   override fun triggerSelection() {
-    // TODO: Android haptics implementation not yet supported
+    AndroidHaptics.tap(0.3f, 0.8f)
   }
 }
