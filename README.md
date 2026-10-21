@@ -46,25 +46,6 @@ On iOS Core Haptics, a pattern is made of two different building blocks:
 
 They're separate because they're different object types in Core Haptics (events vs parameter curves) and they serve different jobs: **events define the structure**, **curves define the modulation**. You often combine both in one pattern.
 
-## Haptix Studio
-
-<table>
-<tr>
-<td>
-<img src="https://github.com/user-attachments/assets/9a0edcfa-37ee-440d-9ae3-48fdcce59780" alt="Haptix Studio" width="280" />
-</td>
-<td>
-
-Try out **Haptix Studio** to see what's possible with haptics.
-
-Play with continuous patterns and real-time updates, then export your creations directly into code.
-
-[Download on Test Flight](https://testflight.apple.com/join/HJn3mbb3)
-
-</td>
-</tr>
-</table>
-
 ## Usage
 
 ### Haptic "provider" (recommended)
