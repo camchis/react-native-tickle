@@ -4,7 +4,7 @@
 
 AHAP-style haptics (transient + continuous) on top of [Nitro Modules](https://nitro.margelo.com/) — the core functions are **UI-thread friendly** (`'worklet'`).
 
-> A fork of [@renegades/react-native-tickle](https://github.com/Renegades-Studio/react-native-tickle) 0.1.2, maintained for the [fiddl](https://github.com/camchis/fiddl) app. It adds an Android implementation and generates its bindings with Nitro 0.37. The API is unchanged, so switching is a change of package name. Issues and PRs are welcome, but expect fixes to follow what fiddl needs.
+> A fork of [@renegades/react-native-tickle](https://github.com/Renegades-Studio/react-native-tickle). It adds an Android implementation and generates its bindings with Nitro 0.37. The API is unchanged, so switching is a change of package name. Issues and PRs are welcome.
 
 ## Why this package?
 
