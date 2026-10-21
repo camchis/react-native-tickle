@@ -1,6 +1,9 @@
-<img width="1536" height="1024" alt="banner" src="https://github.com/user-attachments/assets/61f1f3bf-24dc-4e0d-ba6a-4dce3a548c96" />
-
 # @camchis/react-native-tickle
+
+[![npm version](https://img.shields.io/npm/v/@camchis/react-native-tickle?logo=npm)](https://www.npmjs.com/package/@camchis/react-native-tickle)
+[![npm downloads](https://img.shields.io/npm/dm/@camchis/react-native-tickle?logo=npm)](https://www.npmjs.com/package/@camchis/react-native-tickle)
+[![GitHub release](https://img.shields.io/github/v/release/camchis/react-native-tickle?logo=github)](https://github.com/camchis/react-native-tickle/releases)
+[![license](https://img.shields.io/npm/l/@camchis/react-native-tickle)](LICENSE)
 
 AHAP-style haptics (transient + continuous) on top of [Nitro Modules](https://nitro.margelo.com/) — the core functions are **UI-thread friendly** (`'worklet'`).
 
@@ -355,6 +358,10 @@ startHaptic(transientEvents, []);
 Each call creates an isolated pattern/player — curves from one won't affect events in the other.
 
 > **Note:** The library automatically resets control values to `1.0` at the end of each continuous event, so transients **after** a continuous event finishes are not affected. This limitation only applies to transients **during** a continuous event with active curves.
+
+## Releases
+
+Versions are published to [npm](https://www.npmjs.com/package/@camchis/react-native-tickle) and tagged on GitHub. See the [releases page](https://github.com/camchis/react-native-tickle/releases) for what changed in each version.
 
 ## Acknowledgment
 
