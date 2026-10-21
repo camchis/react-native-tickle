@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router';
-import { HapticProvider, stopAllHaptics } from '@renegades/react-native-tickle';
+import { HapticProvider, stopAllHaptics } from '@camchis/react-native-tickle';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { RecorderProvider } from '../src/contexts/RecorderContext';
 import { ComposerProvider } from '../src/contexts/ComposerContext';

@@ -1,4 +1,4 @@
-import type { HapticEvent, HapticCurve } from '@renegades/react-native-tickle';
+import type { HapticEvent, HapticCurve } from '@camchis/react-native-tickle';
 
 function getCurveEndTime(curve: HapticCurve): number {
   'worklet';

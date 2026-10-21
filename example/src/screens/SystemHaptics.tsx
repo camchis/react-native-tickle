@@ -8,7 +8,7 @@ import {
   triggerSelection,
   type HapticImpactStyle,
   type HapticNotificationType,
-} from '@renegades/react-native-tickle';
+} from '@camchis/react-native-tickle';
 
 const IMPACT_STYLES: HapticImpactStyle[] = [
   'light',

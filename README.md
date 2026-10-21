@@ -1,19 +1,31 @@
 <img width="1536" height="1024" alt="banner" src="https://github.com/user-attachments/assets/61f1f3bf-24dc-4e0d-ba6a-4dce3a548c96" />
 
-# @renegades/react-native-tickle
+# @camchis/react-native-tickle
 
 AHAP-style haptics (transient + continuous) on top of [Nitro Modules](https://nitro.margelo.com/) — the core functions are **UI-thread friendly** (`'worklet'`).
 
+> A fork of [@renegades/react-native-tickle](https://github.com/Renegades-Studio/react-native-tickle) 0.1.2, maintained for the [fiddl](https://github.com/camchis/fiddl) app. It adds an Android implementation and generates its bindings with Nitro 0.37. The API is unchanged, so switching is a change of package name. Issues and PRs are welcome, but expect fixes to follow what fiddl needs.
+
 ## Why this package?
 
-Complete flexibility over iOS haptics with synchronous UI-thread execution.
+Complete flexibility over iOS haptics with synchronous UI-thread execution, and an Android player that follows the same model.
 
-> iOS only (Core Haptics). Android support could be added in the future, but it's currently unplanned.
+## Android
+
+Core Haptics holds one continuous vibration whose intensity and sharpness can change at any moment; most Android vibrators cannot. So on Android a continuous player plays as grain: a stream of very short vibrations whose strength and spacing follow the player's intensity. How a grain is made depends on what the vibrator reports:
+
+- **Composition primitives** (recent Pixel and Galaxy phones): `LOW_TICK`, `TICK` or `CLICK` by sharpness, scaled by intensity.
+- **Amplitude control only**: one-shots at the intensity's amplitude, shorter when sharper.
+- **Neither**: short full-power one-shots whose length carries the strength, and faint textures thin out.
+
+Transients use primitives where there are any, otherwise the predefined `TICK`, `CLICK` and `HEAVY_CLICK` effects. Patterns play their transients as they are and their continuous events as grain streams shaped by their curves. Every vibrator call runs on one haptics thread, so calling Tickle from the UI thread never blocks on a binder call. Vibrations use the touch usage, so Android's touch-vibration setting also silences them. The library adds the `VIBRATE` permission to your manifest.
+
+It is an approximation of Core Haptics, not a port: tune textures on an iPhone, then check that they read well on a couple of Android phones.
 
 ## Installation
 
 ```sh
-npm i @renegades/react-native-tickle react-native-nitro-modules
+npm i @camchis/react-native-tickle react-native-nitro-modules
 ```
 
 ## Concepts (what to use when)
@@ -57,7 +69,7 @@ Play with continuous patterns and real-time updates, then export your creations 
 Wrap your app inside `HapticProvider`. This initializes the engine and automatically destroys it when the app goes to background.
 
 ```tsx
-import { HapticProvider } from '@renegades/react-native-tickle';
+import { HapticProvider } from '@camchis/react-native-tickle';
 
 export function App() {
   return <HapticProvider>{/* {Rest of your app} */}</HapticProvider>;
@@ -69,7 +81,7 @@ export function App() {
 Play a transient:
 
 ```ts
-import { startHaptic } from '@renegades/react-native-tickle';
+import { startHaptic } from '@camchis/react-native-tickle';
 
 startHaptic(
   [
@@ -89,7 +101,7 @@ startHaptic(
 Play a continuous pattern (events + curves together):
 
 ```ts
-import { startHaptic } from '@renegades/react-native-tickle';
+import { startHaptic } from '@camchis/react-native-tickle';
 
 startHaptic(
   [
@@ -120,7 +132,7 @@ startHaptic(
 Combine transient + continuous in one pattern:
 
 ```ts
-import { startHaptic } from '@renegades/react-native-tickle';
+import { startHaptic } from '@camchis/react-native-tickle';
 
 startHaptic(
   [
@@ -151,7 +163,7 @@ startHaptic(
 Use this when you _can't_ predefine a pattern. You start the player, update it in real time, then stop it.
 
 ```tsx
-import { useContinuousPlayer } from '@renegades/react-native-tickle';
+import { useContinuousPlayer } from '@camchis/react-native-tickle';
 
 function MyComponent() {
   const { start, stop, update } = useContinuousPlayer('my-player', 1.0, 0.5);
@@ -194,7 +206,7 @@ You can use the `beforeRemove` event of your navigation library to do it globall
 ```
 
 ```ts
-import { stopAllHaptics } from '@renegades/react-native-tickle';
+import { stopAllHaptics } from '@camchis/react-native-tickle';
 import { useEffect } from 'react';
 
 export function SomeScreen() {
@@ -208,7 +220,7 @@ export function SomeScreen() {
 Disable haptics globally for users who prefer no haptic feedback. The setting is **persisted** across app restarts. When disabled, all haptic calls become no-ops.
 
 ```tsx
-import { useHapticsEnabled } from '@renegades/react-native-tickle';
+import { useHapticsEnabled } from '@camchis/react-native-tickle';
 
 function SettingsScreen() {
   const [hapticsEnabled, setHapticsEnabled] = useHapticsEnabled();
@@ -226,7 +238,7 @@ import {
   triggerImpact,
   triggerNotification,
   triggerSelection,
-} from '@renegades/react-native-tickle';
+} from '@camchis/react-native-tickle';
 
 // Impact feedback - simulates a physical collision
 triggerImpact('light'); // 'light' | 'medium' | 'heavy' | 'soft' | 'rigid'
@@ -346,7 +358,7 @@ Each call creates an isolated pattern/player — curves from one won't affect ev
 
 ## Acknowledgment
 
-Shoutout to [Jai](https://github.com/jaic231) for kicking off the Swift implementation 🙌
+Tickle is by [Renegades](https://renegades.xyz); this fork only adds to their work. Shoutout to [Jai](https://github.com/jaic231) for kicking off the Swift implementation 🙌
 
 ## Contributing
 

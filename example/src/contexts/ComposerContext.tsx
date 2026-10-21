@@ -11,8 +11,8 @@ import {
   type SharedValue,
   type FrameCallback,
 } from 'react-native-reanimated';
-import { startHaptic, stopAllHaptics } from '@renegades/react-native-tickle';
-import type { HapticEvent, HapticCurve } from '@renegades/react-native-tickle';
+import { startHaptic, stopAllHaptics } from '@camchis/react-native-tickle';
+import type { HapticEvent, HapticCurve } from '@camchis/react-native-tickle';
 import {
   type ComposerEvent,
   createDefaultTransientEvent,

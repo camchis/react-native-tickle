@@ -28,12 +28,12 @@
         "eslint-plugin-react-native": "^5.0.0",
         "jest": "^29.7.0",
         "lefthook": "^2.0.3",
-        "nitrogen": "^0.32.1",
+        "nitrogen": "0.37.1",
         "prettier": "^2.8.8",
         "react": "19.1.0",
         "react-native": "0.81.5",
         "react-native-builder-bob": "^0.40.17",
-        "react-native-nitro-modules": "0.32.1",
+        "react-native-nitro-modules": "0.37.1",
         "release-it": "^19.0.4",
         "turbo": "^2.5.6",
         "typescript": "^5.9.2",
@@ -41,7 +41,7 @@
       "peerDependencies": {
         "react": "*",
         "react-native": "*",
-        "react-native-nitro-modules": "*",
+        "react-native-nitro-modules": "^0.37.1",
       },
     },
   },
@@ -532,7 +532,7 @@
 
     "@tootallnate/quickjs-emscripten": ["@tootallnate/quickjs-emscripten@0.23.0", "", {}, "sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA=="],
 
-    "@ts-morph/common": ["@ts-morph/common@0.28.1", "", { "dependencies": { "minimatch": "^10.0.1", "path-browserify": "^1.0.1", "tinyglobby": "^0.2.14" } }, "sha512-W74iWf7ILp1ZKNYXY5qbddNaml7e9Sedv5lvU1V8lftlitkc9Pq1A+jlH23ltDgWYeZFFEqGCD1Ies9hqu3O+g=="],
+    "@ts-morph/common": ["@ts-morph/common@0.29.0", "", { "dependencies": { "minimatch": "^10.0.1", "path-browserify": "^1.0.1", "tinyglobby": "^0.2.14" } }, "sha512-35oUmphHbJvQ/+UTwFNme/t2p3FoKiGJ5auTjjpNTop2dyREspirjMy82PLSC1pnDJ8ah1GU98hwpVt64YXQsg=="],
 
     "@types/babel__core": ["@types/babel__core@7.20.5", "", { "dependencies": { "@babel/parser": "^7.20.7", "@babel/types": "^7.20.7", "@types/babel__generator": "*", "@types/babel__template": "*", "@types/babel__traverse": "*" } }, "sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA=="],
 
@@ -1450,7 +1450,7 @@
 
     "new-github-release-url": ["new-github-release-url@2.0.0", "", { "dependencies": { "type-fest": "^2.5.1" } }, "sha512-NHDDGYudnvRutt/VhKFlX26IotXe1w0cmkDm6JGquh5bz/bDTw0LufSmH/GxTjEdpHEO+bVKFTwdrcGa/9XlKQ=="],
 
-    "nitrogen": ["nitrogen@0.32.1", "", { "dependencies": { "chalk": "^5.3.0", "react-native-nitro-modules": "^0.32.1", "ts-morph": "^27.0.0", "yargs": "^18.0.0", "zod": "^4.0.5" }, "bin": { "nitrogen": "lib/index.js" } }, "sha512-/bMqBXfq+ICboH34pHffyp1eftSAb+VS5QEne94gRwcNawwPI3TqpmDowpM7/BlKtwXgl3mLucQx4sWjVLYehQ=="],
+    "nitrogen": ["nitrogen@0.37.1", "", { "dependencies": { "chalk": "^5.3.0", "react-native-nitro-modules": "^0.37.1", "ts-morph": "^28.0.0", "yargs": "^18.0.0", "zod": "^4.4.3" }, "bin": { "nitrogen": "lib/index.js" } }, "sha512-RMK1n8xV7B38JorfLCFexgPEDp7/4CnM/AR0R3UfikufXo8qB8TecgtY+sW0xjOjZJYwW5bJJI/kyZjusYk4JA=="],
 
     "node-fetch-native": ["node-fetch-native@1.6.7", "", {}, "sha512-g9yhqoedzIUm0nTnTqAQvueMPVOuIY16bqgAJJC8XOOubYFNwz6IER9qs0Gq2Xd0+CecCKFjtdDTMA4u4xG06Q=="],
 
@@ -1604,7 +1604,7 @@
 
     "react-native-monorepo-config": ["react-native-monorepo-config@0.3.2", "", { "dependencies": { "escape-string-regexp": "^5.0.0", "fast-glob": "^3.3.3" } }, "sha512-Cl21GRCN/ZH3cEVtG7yY84NO2G6Bn57yEXReikOKFkFRUo6PFTAWfanEZReGqdAkhY5L/ORIml8abE1q83CZYQ=="],
 
-    "react-native-nitro-modules": ["react-native-nitro-modules@0.32.1", "", { "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-V+Vy76e4fxRxgVGu5Uh3cBPvuFQW8fM1OUKk1mqEA/JawjhX+hxHtBhpfuvNjV0BnV/uXCIg8/eK+rTpB6tqFg=="],
+    "react-native-nitro-modules": ["react-native-nitro-modules@0.37.1", "", { "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-KpW6EQVQ/bfegpCGxN9Be+ndvsfj56t4IESEvCASu9gWpJa/NDfHpIeIwCOvZQ3eXmLEj6YD4wCLqcC1FJPr2w=="],
 
     "react-refresh": ["react-refresh@0.14.2", "", {}, "sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA=="],
 
@@ -1798,7 +1798,7 @@
 
     "ts-api-utils": ["ts-api-utils@2.4.0", "", { "peerDependencies": { "typescript": ">=4.8.4" } }, "sha512-3TaVTaAv2gTiMB35i3FiGJaRfwb3Pyn/j3m/bfAvGe8FB7CF6u+LMYqYlDh7reQf7UNvoTvdfAqHGmPGOSsPmA=="],
 
-    "ts-morph": ["ts-morph@27.0.2", "", { "dependencies": { "@ts-morph/common": "~0.28.1", "code-block-writer": "^13.0.3" } }, "sha512-fhUhgeljcrdZ+9DZND1De1029PrE+cMkIP7ooqkLRTrRLTqcki2AstsyJm0vRNbTbVCNJ0idGlbBrfqc7/nA8w=="],
+    "ts-morph": ["ts-morph@28.0.0", "", { "dependencies": { "@ts-morph/common": "~0.29.0", "code-block-writer": "^13.0.3" } }, "sha512-Wp3tnZ2bzwxyTZMtgWVzXDfm7lB1Drz+y9DmmYH/L702PQhPyVrp3pkou3yIz4qjS14GY9kcpmLiOOMvl8oG1g=="],
 
     "tslib": ["tslib@2.8.1", "", {}, "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="],
 
@@ -2131,6 +2131,8 @@
     "new-github-release-url/type-fest": ["type-fest@2.19.0", "", {}, "sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA=="],
 
     "nitrogen/chalk": ["chalk@5.6.2", "", {}, "sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA=="],
+
+    "nitrogen/zod": ["zod@4.6.7", "", {}, "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg=="],
 
     "ora/chalk": ["chalk@5.6.2", "", {}, "sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA=="],
 

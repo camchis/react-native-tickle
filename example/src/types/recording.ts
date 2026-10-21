@@ -1,4 +1,4 @@
-import type { HapticCurve, HapticEvent } from '@renegades/react-native-tickle';
+import type { HapticCurve, HapticEvent } from '@camchis/react-native-tickle';
 
 export interface RecordedHaptic {
   id: string;

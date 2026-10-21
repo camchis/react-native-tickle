@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "@renegades/react-native-tickle": ["./src/index"]
+      "@camchis/react-native-tickle": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
