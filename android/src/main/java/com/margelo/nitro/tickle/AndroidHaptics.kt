@@ -74,7 +74,25 @@ internal object AndroidHaptics {
   private const val DEFAULT_DURATION_MS = 1000.0
   private val PATTERN = Any()
 
-  @Volatile var enabled = true
+  // Persisted like the iOS UserDefaults key, so the setting survives restarts.
+  private const val PREFS_NAME = "com.tickle"
+  private const val ENABLED_KEY = "com.tickle.hapticsEnabled"
+  // Null until read from or written to; stays null while no Context exists yet.
+  @Volatile private var enabledCache: Boolean? = null
+
+  var enabled: Boolean
+    get() {
+      enabledCache?.let { return it }
+      val prefs = prefs() ?: return true
+      return prefs.getBoolean(ENABLED_KEY, true).also { enabledCache = it }
+    }
+    set(value) {
+      enabledCache = value
+      prefs()?.edit()?.putBoolean(ENABLED_KEY, value)?.apply()
+    }
+
+  private fun prefs() =
+    NitroModules.applicationContext?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
   private val handler: Handler by lazy {
     val thread = HandlerThread("TickleHaptics", Process.THREAD_PRIORITY_DISPLAY)
