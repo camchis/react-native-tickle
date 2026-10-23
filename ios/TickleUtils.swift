@@ -21,6 +21,24 @@ protocol HapticAnimationState {
     var hapticCurves: [CHHapticParameterCurve] { get }
 }
 
+extension HapticAnimationState {
+    /// Cache key built from the pattern's contents. `String(describing:)` on the
+    /// state includes the object addresses of the events and curves, which differ
+    /// on every call, so the same pattern never hit the player cache and each play
+    /// left behind a new player.
+    var cacheKey: String {
+        let events = hapticEvents.map { event -> String in
+            let params = event.eventParameters.map { "\($0.parameterID.rawValue)=\($0.value)" }
+            return "\(event.type.rawValue)@\(event.relativeTime)+\(event.duration)[\(params.joined(separator: ","))]"
+        }
+        let curves = hapticCurves.map { curve -> String in
+            let points = curve.controlPoints.map { "\($0.relativeTime):\($0.value)" }
+            return "\(curve.parameterID.rawValue)@\(curve.relativeTime)[\(points.joined(separator: ","))]"
+        }
+        return "E:" + events.joined(separator: ";") + "|C:" + curves.joined(separator: ";")
+    }
+}
+
 /// Stores the configuration for a continuous player so it can be recreated after engine reinitialization
 struct ContinuousPlayerConfig {
     let playerId: String
@@ -193,7 +211,7 @@ class HapticFeedback {
         rebuildPlayersIfReset()
 
         for state in states {
-            let key = String(describing: state)
+            let key = state.cacheKey
             guard hapticPlayers[key] == nil else { continue }
             do {
                 let pattern = try CHHapticPattern(events: state.hapticEvents, parameterCurves: state.hapticCurves)
@@ -359,7 +377,7 @@ class HapticFeedback {
         lock.lock()
         defer { lock.unlock() }
 
-        let key = String(describing: state)
+        let key = state.cacheKey
         guard hapticPlayers[key] != nil else { return }
         ensureEngineRunning()
         // Look the player up again: a reset rebuild in ensureEngineRunning() drops cached patterns.
@@ -378,7 +396,7 @@ class HapticFeedback {
         lock.lock()
         defer { lock.unlock() }
 
-        let key = String(describing: state)
+        let key = state.cacheKey
         do {
             try hapticPlayers[key]?.stop(atTime: CHHapticTimeImmediate)
         } catch let error {
