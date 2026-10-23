@@ -340,13 +340,9 @@ Each call creates an isolated pattern/player — curves from one won't affect ev
 
 > **Note:** The library automatically resets control values to `1.0` at the end of each continuous event, so transients **after** a continuous event finishes are not affected. This limitation only applies to transients **during** a continuous event with active curves.
 
-## Releases
-
-Versions are published to [npm](https://www.npmjs.com/package/@camchis/react-native-tickle) and tagged on GitHub. See the [releases page](https://github.com/camchis/react-native-tickle/releases) for what changed in each version.
-
 ## Acknowledgment
 
-Tickle is by [Renegades](https://renegades.xyz); this fork only adds to their work. Shoutout to [Jai](https://github.com/jaic231) for kicking off the Swift implementation 🙌
+Tickle is by [Renegades](https://renegades.xyz); this fork only adds to their work.
 
 ## Contributing
 
