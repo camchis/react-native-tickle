@@ -105,6 +105,9 @@ internal object AndroidHaptics {
   private var tier = Tier.BASIC
   private var lowTick = false
   private var running = false
+  // Players outlive the engine, as on iOS: createPlayer and destroyPlayer update this map
+  // whether or not the engine is running, so a player created before initializeEngine (or
+  // before a restart) is there when the engine comes up. Only `playing` is runtime state.
   private val players = HashMap<String, Player>()
   // Grains per second at the last tick; zero while nothing is audible.
   private var rate = 0f
@@ -119,7 +122,7 @@ internal object AndroidHaptics {
   fun destroyEngine() =
     handler.post {
       running = false
-      players.clear()
+      for (player in players.values) player.playing = false
       handler.removeCallbacksAndMessages(PATTERN)
       tick()
       vibrator?.cancel()
@@ -128,12 +131,12 @@ internal object AndroidHaptics {
   fun stopAll() = handler.post { handler.removeCallbacksAndMessages(PATTERN) }
 
   fun createPlayer(id: String, intensity: Double, sharpness: Double) =
-    handler.post { if (running) players[id] = Player(intensity.toFloat(), sharpness.toFloat()) }
+    handler.post { players[id] = Player(intensity.toFloat(), sharpness.toFloat()) }
 
   fun startPlayer(id: String) =
     handler.post {
       val player = players[id] ?: return@post
-      if (!enabled) return@post
+      if (!enabled || !running) return@post
       player.playing = true
       tick()
     }
