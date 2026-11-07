@@ -1,6 +1,6 @@
 {
   "name": "@camchis/react-native-tickle",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Haptic patterns and continuous players for React Native, with an Android implementation. A fork of @renegades/react-native-tickle.",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
